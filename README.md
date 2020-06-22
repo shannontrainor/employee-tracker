@@ -11,9 +11,12 @@ The Employee Tracker app was created in order to provide the user with a way to 
 The database & all information from the displayed table was created using MySQL.
 
 ## Deployed Here
-### Video
-Here you can find a video of the application:  
-[! [Watch Video Here](assets\employee-tracker-vid.mp4)]  
+
+### GIF
+Below is a GIF showing the application:  
+![](assets\employee-tracker-gif.gif)
+
+
 ### Photo
 Below is a photo of the application capabilities:
 ![](/assets/employee-tracker-photo.png)
