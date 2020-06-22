@@ -2,31 +2,34 @@
 const connection = require("./connection.js");
 
 class DB {
-    constructor(connection) {
+    constructor() {
         this.connection = connection;
     };
 
     //view all employees
     getAllEmployees() {
-        return this.connection.query("SELECT * FROM employee"), (err,res) => {
-            if (err) throw error;
-            console.log(res);  //log results
-            connection.end();
-        };
+        return this.connection.query("SELECT * FROM employee");
+        //  (err,res) => {
+        //     if (err) throw error;
+            // console.table(res);  //log results in table
+        //    connection.end();
+        // };
     };
     //view all roles
     getAllRoles() {
-        return this.connection.query("SELECT * FROM role"), (err,res) => {
-            if (err) throw error;
-            console.log(res);  //log results
-            connection.end();
-        };
+        return this.connection.query("SELECT * FROM role");
+        // , (err,res) => {
+        //     if (err) throw error;
+            
+        //     console.table(res);  //log results in table
+        //     // connection.end();
+        // };
     };
     //view all departments
     getAllDepartments() {
         return this.connection.query("SELECT * FROM department"), (err,res) => {
             if (err) throw error;
-            console.log(res);  //log results
+            console.table(res);  //log results in table
             connection.end();
         };
     };
@@ -43,15 +46,15 @@ class DB {
 
     //add new dept
     addNewDepartment(department) {
-        return this.connection.query("INSERT INTO department SET ?", department);
+        return this.connection.query("INSERT INTO department (name) VALUES (?)", [department]);
     }
 
     //update role
-    updateRole() {
-        return this.connection.query("UPDATE role SET ? WHERE ?", [role, title ]);
+    updateRole(employeeId, roleId) {
+        return this.connection.query("UPDATE role SET role_id = ? WHERE id = ?", [roleId, employeeId ]);
     }
 
-    
+
 
 
 
