@@ -71,7 +71,7 @@ const startPrompt = () => {
 }
 startPrompt();
 
-
+//add new employee, prompt next question
 const employeeAdd = () => {
     inquirer.prompt({
         name: "name",
@@ -79,13 +79,15 @@ const employeeAdd = () => {
         message: "What is your employee's name?",
     })
     .then((answer) => {
-        database.addNewEmployee(answer.name).then((response) => {
-            console.table(response);
+        database.addNewEmployee(answer.name)
+        .then(() => {
+            console.log("Added Successfully");
         });
         startPrompt();
     });
 }
 
+//add new dept, prompt next question
 const departmentAdd = () => {
     inquirer.prompt({
         name: "name",
@@ -96,20 +98,21 @@ const departmentAdd = () => {
         database.addNewDepartment(answer.name)
         .then(() => {
             console.log("Added Successfully");
-         });
+        });
         startPrompt();
-    })
+    });
 }
-
+//add new role, prompt next question
 const roleAdd = () => {
     inquirer.prompt({
-        name: "roleName",
+        name: "name",
         type: "input",
-        message: "What is the name of the role you would like to add?"
+        message: "What is the name of the role you would like to add?",
     })
     .then((answer) => {
-        database.addNewRole(answer.roleName).then((response) => {
-            console.table(response);
+        database.addNewRole(answer.name)
+        .then(() => {
+            console.log("Added Successfully");
         });
         startPrompt();
     });
