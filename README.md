@@ -14,7 +14,7 @@ The database & all information from the displayed table was created using MySQL.
 
 ### GIF
 Below is a GIF showing the application:  
-![](assets\employee-tracker-gif.gif)
+![](/assets/employee-tracker-gif.gif)
 
 
 ### Photo
