@@ -62,6 +62,7 @@ const startPrompt = () => {
                 break;
                 
             case "Update Employee Role":
+                employeeRoleUpdate();
                 break;
 
             case "exit":
@@ -116,4 +117,20 @@ const roleAdd = () => {
         });
         startPrompt();
     });
+}
+
+const employeeRoleUpdate = () => {
+    inquirer.prompt({
+        name: "employee",
+        type: "list",
+        message: "Which employee would you like to update?",
+        choices: ["Ronald Mac McDonald", "Dee Reynolds", "Charlie Kelly", "Dennis Reynolds"]
+    })
+    .then((answer) => {
+        database.updateRole(answer.employee)
+        .then(() => {
+            console.log("Successfully Updated");
+        });
+        startPrompt();
+    })
 }
