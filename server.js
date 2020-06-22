@@ -28,13 +28,17 @@ const startPrompt = () => {
     }).then ((answer) => {
         switch (answer.firstChoice) {
             case "View Employees":
-                database.getAllEmployees().then((response) => {
+                database.getAllEmployees().then((response) => {     //access database & console response in table
                     console.table(response);
                 });
-                startPrompt();
+                startPrompt();  //call back start prompt function for next step
                 break;
             
             case "View Departments":
+                database.getAllDepartments().then((response) => {
+                    console.table(response);
+                });
+                startPrompt();
                 break;
 
             case "View Roles":
@@ -67,13 +71,6 @@ const startPrompt = () => {
 }
 startPrompt();
 
-//  const allEmployees = () => {
-//      function (answer) {
-//         database.getAllEmployees(answer).then((response) =>  {
-//         console.table(response);
-//      });
-//      startPrompt();
-//  }
 
 const employeeAdd = () => {
     inquirer.prompt({
