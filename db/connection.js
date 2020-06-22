@@ -12,7 +12,13 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME,
 });
 
-connection.connect();
+connection.connect((err) => {
+    if (err) {
+        throw err;
+    }
+
+    console.log("Connection to DB successful");
+});
 
 connection.query = util.promisify(connection.query);
 
