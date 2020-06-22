@@ -15,8 +15,8 @@ The database & all information from the displayed table was created using MySQL.
 Here you can find a video of the application:  
 [! [Watch Video Here](assets\employee-tracker-vid.mp4)]  
 ### Photo
-Here is a photo of the application capabilities:
-![](assets\employee-tracker-photo.png)
+Below is a photo of the application capabilities:
+![](/assets/employee-tracker-photo.png)
 
 
 The syntax of the Employee Tracker app can be found on GitHub:  
