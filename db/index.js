@@ -9,29 +9,14 @@ class DB {
     //view all employees
     getAllEmployees() {
         return this.connection.query("SELECT * FROM employee");
-        //  (err,res) => {
-        //     if (err) throw error;
-            // console.table(res);  //log results in table
-        //    connection.end();
-        // };
     };
     //view all roles
     getAllRoles() {
         return this.connection.query("SELECT * FROM role");
-        // , (err,res) => {
-        //     if (err) throw error;
-            
-        //     console.table(res);  //log results in table
-        //     // connection.end();
-        // };
     };
     //view all departments
     getAllDepartments() {
-        return this.connection.query("SELECT * FROM department"), (err,res) => {
-            if (err) throw error;
-            console.table(res);  //log results in table
-            connection.end();
-        };
+        return this.connection.query("SELECT * FROM department");
     };
 
     //add new employee
