@@ -2,7 +2,7 @@
 //require db folder
 //require console.table
 const inquirer = require("inquirer");
-const db = require("./db");
+const db = require("./db/index");
 require("console.table");
 
 
@@ -28,21 +28,33 @@ const startPrompt = () => {
     }).then ((answer) => {
         switch (answer.firstChoice) {
             case "View Employees":
+                database.getAllEmployees().then((response) => {
+                    console.table(response);
+                });
+                startPrompt();
                 break;
             
             case "View Departments":
                 break;
 
             case "View Roles":
+                database.getAllRoles()
+                .then((reponse) => {
+                    console.table(reponse);
+                 });
+                startPrompt();
                 break;
             
             case "Add Employee":
+                employeeAdd();
                 break;
 
             case "Add Department":
+                departmentAdd();
                 break;
             
             case "Add Role":
+                roleAdd();
                 break;
                 
             case "Update Employee Role":
@@ -52,4 +64,56 @@ const startPrompt = () => {
                 break;
         }
     })
+}
+startPrompt();
+
+//  const allEmployees = () => {
+//      function (answer) {
+//         database.getAllEmployees(answer).then((response) =>  {
+//         console.table(response);
+//      });
+//      startPrompt();
+//  }
+
+const employeeAdd = () => {
+    inquirer.prompt({
+        name: "name",
+        type: "input",
+        message: "What is your employee's name?",
+    })
+    .then((answer) => {
+        database.addNewEmployee(answer.name).then((response) => {
+            console.table(response);
+        });
+        startPrompt();
+    });
+}
+
+const departmentAdd = () => {
+    inquirer.prompt({
+        name: "name",
+        type: "input",
+        message: "What is the name of the department you would like to add?",
+    })
+    .then((answer) => {
+        database.addNewDepartment(answer.name)
+        .then(() => {
+            console.log("Added Successfully");
+         });
+        startPrompt();
+    })
+}
+
+const roleAdd = () => {
+    inquirer.prompt({
+        name: "roleName",
+        type: "input",
+        message: "What is the name of the role you would like to add?"
+    })
+    .then((answer) => {
+        database.addNewRole(answer.roleName).then((response) => {
+            console.table(response);
+        });
+        startPrompt();
+    });
 }
